@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
+gem 'gravatar_image_tag', '1.0.0.pre2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -18,6 +19,7 @@ group :test do
   # gem 'autotest-rails-pure', '4.1.2'
   # gem 'autotest-fsevent', '0.2.4'
   # gem 'autotest-growl', '0.2.9'
+  gem 'factory_girl_rails', '1.0'
 end
 
 
