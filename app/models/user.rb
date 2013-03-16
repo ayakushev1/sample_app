@@ -1,22 +1,23 @@
 require 'digest'
 
 class User < ActiveRecord::Base
-  attr_accessor :password
-  attr_accessible :name, :email, :password, :password_confirmation
 
+  attr_accessor :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation
+    
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
-  validate :name, presence => true,
+  validates :name,  :presence => true,
                     :length   => { :maximum => 50 }
 
-  validate :email, presence => true,
-                    :format   => { :with => email_regex },
+  validates :email, :presence   => true,
+                    :format     => { :with => email_regex },
                     :uniqueness => { :case_sensitive => false }
 
-  # Automatically create the virtual attribute 'password_confirmation'.
-  validate :password, :presence     => true,
+  validates :password, :presence => true,
                        :confirmation => true,
-                       :length       => { :within => 6..40 }
+                       :length => { :within => 6..40 }
+
 
   before_save :encrypt_password
 
