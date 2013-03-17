@@ -6,4 +6,8 @@
   sample application.
 </p>
 
-<%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<% if not signed_in? %>
+    <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<% else %>
+    <a>'You are logged in'</a>
+<% end %>
